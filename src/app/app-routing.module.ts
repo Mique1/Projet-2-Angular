@@ -5,9 +5,10 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: '', 
     component: HomeComponent,
   },
+  {path: 'olympics', component: HomeComponent},
   {
     path: '**', // wildcard
     component: NotFoundComponent,
@@ -17,5 +18,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
+
 })
 export class AppRoutingModule {}

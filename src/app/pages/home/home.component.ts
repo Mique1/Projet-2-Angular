@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { OlympicService } from 'src/app/core/services/olympic.service';
+import { Olympic } from 'src/app/core/models/Olympic';
+import { Participation } from 'src/app/core/models/Participation';
+import { mainOlympicService } from 'src/app/core/services/mainOlympicService';
+import { OlympicData } from 'src/assets/mock/olympicData';
+
+
+
 
 @Component({
   selector: 'app-home',
@@ -8,11 +14,20 @@ import { OlympicService } from 'src/app/core/services/olympic.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  public olympics$: Observable<any> = of(null);
 
-  constructor(private olympicService: OlympicService) {}
+  olympics$:( Olympic| Participation)[] = OlympicData 
+  // olympics$: Observable<(Olympic |Participation)[]>| undefined;
+  
+
+  constructor(private mainOlympicService: mainOlympicService) {}
 
   ngOnInit(): void {
-    this.olympics$ = this.olympicService.getOlympics();
-  }
+    //  this.olympicsSubject$ = this.mainOlympicService.getOlympics();
+    this.mainOlympicService.getOlympics()
+     .subscribe( olympics$ => this.olympics$ =  olympics$ ) 
+    }
 }
+    
+  
+  
+

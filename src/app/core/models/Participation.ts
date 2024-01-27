@@ -1,3 +1,11 @@
+
+export class Participation{
+    id!: 1;
+    year!: 2012;
+    city!: "Londres";
+    medalsCount!: 28;
+    athleteCount!: 372
+}
 // TODO: create here a typescript interface for a participation
 /*
 example of participation:
